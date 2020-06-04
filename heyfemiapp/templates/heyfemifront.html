@@ -1,0 +1,97 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
+	<title>HEY FEMI!</title>
+	<link rel="stylesheet" type="text/css" href="{% static "CSS/styles.css" %}">
+    <link href="https://fonts.googleapis.com/css2?family=Candal&family=Lora:wght@700&family=Slabo+27px&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap" rel="stylesheet">
+        <script src="https://kit.fontawesome.com/5d656ed4c3.js" crossorigin="anonymous"></script>
+
+</head>
+<body>
+<header>
+
+    <h1 ><a href="{% url 'homepage' %}" class="glow" style="text-decoration: none">HEY FEMI!😃</a> </h1>
+
+</header>
+
+<div class="row" style="display: flex">
+
+	<div class="left-column">
+            <h1 style="color: white; padding: 20px; font-family: 'Candal', sans-serif;">RECENT POSTS</h1>
+
+        {% for posty in posts %}
+		<div class="card" style="height: 60%; background-color: black; color: white">
+			
+                <h2><a href="{% url 'content' post_id=posty.id%}" style="color: white; font-size: xx-large;text-shadow: 0 0 3px #FF0000, 0 0 5px #0000FF; text-decoration: none; font-family: 'Candal', sans-serif"> {{ posty.Title }}</a></h2>
+               <br>
+                <img src="{{ posty.Image.url }}" style="height: 70%">
+
+                <div style="display: flex">
+                    <p style="font-weight: bolder;">Description: </p> <p> &nbsp;{{ posty.Description }}</p>    &nbsp; &nbsp;         <p style="font-weight: bolder">C♠tegory</p> <p> &nbsp;- &nbsp;{{ posty.category.Name }}</p>
+
+                </div>
+            <i class="far fa-user" style="color:white"> {{ posty.Author }}</i>
+                        &nbsp;
+            <i class="far fa-calendar" style="color: white"> {{ posty.Date }}</i>
+        </div>
+
+        {% endfor %}
+	</div>
+	<div class="right-column" style="margin-top:110px;">
+		<div class="card Category">
+            <h2 style="margin: 10px 0 10px 0;font-family: 'Candal, sans-serif'; font-weight:bolder;text-shadow: 0 0 3px #FF0000, 0 0 5px #0000FF; color: white"> CATEGORY</h2>
+            <ul>
+                <li> <a href="{% url 'categories' category_id=1 %}" style="color: white">Lifestyle</a></li>
+                <li> <a href="{% url 'categories' category_id=2 %}" style="color: white">Python</a></li>
+                <li> <a href="{% url 'categories' category_id=3 %}" style="color: white">C++</a></li>
+                <li> <a href="{% url 'categories' category_id=4 %}" style="color: white">AWS</a></li>
+                <li> <a href="{% url 'categories' category_id=6 %}" style="color: white">Other Skills</a></li>
+                <li> <a href="{% url 'categories' category_id=5 %}" style="color: white">Web Development</a></li>
+
+            </ul>
+		</div>
+		<div class="card">
+            <h2 style="margin: 10px 0 10px 0;font-family: 'Candal, sans-serif'; font-weight:bolder;text-shadow: 0 0 3px #FF0000, 0 0 5px #0000FF; color: white"> ABOUT ME</h2>
+
+
+			<p>My name is Olufemi Olumaiyegun, easily known as Femi. I love computers and messing around with code.</p>
+            <p>I am a student of the University of North Texas majoring in Computer Science, I plan to do my masters in Data Science</p>
+		    <p>Due to severe boredom with my life and a passion for coding, I spend my free time programming or watching anime. Below you will find a link to my Github account if you are interested in perusing my projects</p>
+        </div>
+		
+		<div class="card">
+			<h3>Follow my GitHub</h3>
+
+            <p>                        <i class="far fa-user" style="color:white"> {{ posty.Author }}</i>
+<a href="https://github.com/olufemi-olumaiyegun" style="text-decoration: none; margin: 10px 0 10px 0;font-family: 'Candal, sans-serif'; font-weight:bolder;text-shadow: 0 0 3px #FF0000, 0 0 5px #0000FF; color: white;" target="_blank">Github link</a></p>
+		</div>
+	</div>
+</div>
+{% if posts.has_other_pages %}
+    <ul class="pagination">
+
+    {% if posts.has_previous %}
+      <li><a href="?page={{ posts.previous_page_number }}"><i class="fas fa-angle-left"></i> </a></li>
+    {% else %}
+      <li class="disabled "><span>&laquo;</span></li>
+    {% endif %}
+    {% for i in posts.paginator.page_range %}
+      {% if posts.number == i %}
+        <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+      {% else %}
+        <li><a href="?page={{ i }}">{{ i }}</a></li>
+      {% endif %}
+    {% endfor %}
+    {% if posts.has_next %}
+      <li><a href="?page={{ posts.next_page_number }}">&raquo;</a></li>
+    {% else %}
+      <li class="disabled"><span>&raquo;</span></li>
+    {% endif %}
+  </ul>
+
+{% endif %}
+</body>
+</html>

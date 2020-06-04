@@ -1,0 +1,141 @@
+body{
+	font-family: Arial;
+	margin: 0;
+	background: url("../Images/spacy.jpg");
+}
+*{
+	box-sizing: border-box;
+}
+header{
+	background: url("../Images/spacy.jpg");
+	padding: 30px;
+	width: 100%;
+	margin-bottom: 20px;
+
+}
+
+header h1 {
+	text-align: center;
+	font-size: 5em;
+
+	margin: 1.5px 0px;
+	font-weight: bolder;
+	/*font-style: oblique;
+	/*font-style: oblique;*/
+
+}
+
+
+.left-column{
+	float: left;
+	width: 70%;
+
+}
+
+.right-column{
+	width: 30%;
+	float: right;
+	padding-left: 25px;
+}
+.left-column .card{
+	margin-top: 30px;
+	padding: 20px;
+
+	margin-left: 20px;
+}
+.card{
+	padding: 20px;
+	background-color: #ffffff;
+	margin-top: 20px;
+	margin-bottom: 40px;
+
+
+}
+
+.right-column .card{
+	margin-right: 20px;
+	background-color: 	#2F343A;
+	color: white;
+
+}
+
+.card img{
+	width: 100%;
+}
+.left-column .card img{
+	  width: 40%;
+    height: 80%;
+
+}
+.right-column .card img{
+	margin-bottom: 10px;
+
+}
+h2{
+	color:#000000;
+	margin: 1.5px 0px
+}
+
+footer{
+	background-color: #dddddd;
+	padding: 20px;
+	text-align: center;
+	margin-top: 20px;
+}
+
+.row:after{
+	content: '';
+	display: table;
+	clear: both;
+}
+
+.Category ul{
+	margin: 0px;
+    padding: 0px;
+    list-style: none;
+        border-bottom:1px solid #e0e0e0 ;
+}
+.Category ul li a{
+	 display: block;
+    padding: 15px 0 15px 0;
+    border-bottom:1px solid #e0e0e0 ;
+    transition: all 0.1s;
+	color: white;
+	text-decoration: none;
+}
+.Category ul li a:hover{
+	padding-left: 20px;
+    transition: all 0.3s;
+}
+.glow {
+  font-size: 80px;!important;
+  color: #fff;!important;
+font-family: 'Candal', sans-serif;!important;
+  text-align: center;!important;
+  -webkit-animation: glow 1s ease-in-out infinite alternate;!important;
+  -moz-animation: glow 1s ease-in-out infinite alternate;!important;
+  animation: glow 1s ease-in-out infinite alternate;!important;
+}
+
+@-webkit-keyframes glow {
+
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+  }
+
+  to {
+    text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
+  }
+}
+@media(max-width: 760px) {
+	.left-column. {
+		width: 100%;
+		overflow: hidden}
+	.right-column{
+		width: 100%;
+	}
+	.left-column .card {
+		width: 100%;
+		overflow: hidden;
+	}
+}
